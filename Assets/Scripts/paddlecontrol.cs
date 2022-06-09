@@ -19,6 +19,7 @@ public class paddlecontrol : MonoBehaviour
     { 
         //translated movement
         MoveObject(GetInput());
+        
     }
     //private class input
     private Vector2 GetInput()
@@ -42,5 +43,6 @@ public class paddlecontrol : MonoBehaviour
     {
         //move
         rig.velocity = movement;
+        Debug.Log("Speed =" + rig.velocity);
     }
 }
