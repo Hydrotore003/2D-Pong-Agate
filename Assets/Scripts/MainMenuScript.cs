@@ -15,6 +15,6 @@ public class MainMenuScript : MonoBehaviour
 
     public void OpenAuthor()
     {
-        Debug.Log("Created By Farhan Annur Mahmudi");
+        Debug.Log("Created By Farhan Annur Mahmudi - 149251970101-33");
     }
 }
