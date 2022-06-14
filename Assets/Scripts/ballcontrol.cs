@@ -52,4 +52,9 @@ public class ballcontrol : MonoBehaviour
         transform.position = new Vector2(resetPosition.x, resetPosition.y);
         Start();
     }
+
+    public void ActivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity *= magnitude;
+    }
 }
