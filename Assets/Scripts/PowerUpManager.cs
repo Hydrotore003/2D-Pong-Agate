@@ -11,40 +11,35 @@ public class PowerUpManager : MonoBehaviour
     public List<GameObject> powerUpTemplateList;
     private List<GameObject> powerUpList;
     public int spawnInterval;
+    public int spawnInverval2;
     private float timer;
+    private float timer2;
     private int amount;
 
     private void Start()
     {
         powerUpList = new List<GameObject>();
         timer = 0;
+        timer2 = 0;
     }
 
     private async void Update() 
     { 
         timer += Time.deltaTime;
+        timer2 += Time.deltaTime;
 
         if (timer > spawnInterval)
         {
             GenerateRandomPowerUp();
-
-            if (powerUpList.Count < 2 || powerUpList.Count > 0)
-            {
-                Invoke("RemoveIfOne", 10);
-                Invoke("GenerateRandomPowerUp", 5);
-                
-            }
-
-            if (powerUpList.Count < 3 || powerUpList.Count > 1)
-            {
-                Invoke("RemoveIftwo", 10);
-                Invoke("GenerateRandomPowerUp", 5);
-            }
-            else
-            {
-                return;
-            }
+            
             timer = 0;
+        }
+
+        if (timer2 > spawnInverval2)
+        {
+            //maxPowerUpAmount += 1;
+            RemoveAllPowerUp();
+            timer2 = spawnInverval2 - (2 * spawnInterval);
         }
        
     }
@@ -82,20 +77,9 @@ public class PowerUpManager : MonoBehaviour
 
     public void RemoveAllPowerUp()
     {
-        while (powerUpList.Count > 0)
+        if (powerUpList.Count > 0)
         {
             RemovePowerUp(powerUpList[0]);
         }
     }
-
-    public void RemoveIfOne()
-    {
-        RemovePowerUp(powerUpList[0]);
-    }
-
-    public void RemoveIfTwo()
-    {
-        RemovePowerUp(powerUpList[1]);
-    }
-
 }

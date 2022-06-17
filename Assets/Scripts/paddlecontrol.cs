@@ -5,13 +5,19 @@ using UnityEngine;
 public class paddlecontrol : MonoBehaviour
 {
     //declare
-    public int speed;
+    public float speed;
+    public float normalspeed;
     public KeyCode goUP;
     public KeyCode goDOWN;
     private Rigidbody2D rig;
+    public Vector3 originalsize;
+    public Vector3 scale;
+
 
     private void Start()
     {
+        originalsize = transform.localScale;
+        
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -19,7 +25,7 @@ public class paddlecontrol : MonoBehaviour
     { 
         //translated movement
         MoveObject(GetInput());
-        
+
     }
     //private class input
     private Vector2 GetInput()
@@ -43,6 +49,37 @@ public class paddlecontrol : MonoBehaviour
     {
         //move
         rig.velocity = movement;
-        Debug.Log("Speed =" + rig.velocity);
+        //Debug.Log("Speed =" + rig.velocity);
     }
+
+    public void ActivatePaddleSpeed(float magnitude) 
+    {
+        speed *= magnitude;
+        Invoke("ReturnPaddleSpeed", 5);
+    }
+
+    public void ReturnPaddleSpeed()
+    {
+        speed = normalspeed;
+    }
+
+    public void ActivatePaddleSize(float magnitude)
+    {
+        Vector3 scale = transform.localScale;
+        transform.localScale = new Vector3(scale.x, scale.y * magnitude, scale.z);
+        Invoke("ReturnPaddleSize", 5);
+    }
+
+    public void ActivatePaddleSize2(float magnitude)
+    {
+        Vector3 scale = transform.localScale;
+        transform.localScale = new Vector3(scale.x, scale.y * magnitude, scale.z);
+        Invoke("ReturnPaddleSize", 5);
+    }
+
+    public void ReturnPaddleSize()
+    {
+        transform.localScale = originalsize;
+    }
+
 }

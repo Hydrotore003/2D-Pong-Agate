@@ -7,6 +7,7 @@ public class ballcontrol : MonoBehaviour
     public Vector2 speed;
     private Rigidbody2D rig;
     public Vector2 resetPosition;
+    public Vector2 BallVelocity;
 
     private void Start()
     {
@@ -39,7 +40,13 @@ public class ballcontrol : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log("Speed =" + rig.velocity);
+        //BallVelocity = rig.velocity;
+        //Debug.Log("Velocity =" + BallVelocity.x);
+    }
+
+    public void GetVelocity()
+    {
+        BallVelocity = rig.velocity;
     }
 
     public void ResetBall()

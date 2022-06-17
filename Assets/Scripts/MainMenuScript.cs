@@ -4,17 +4,38 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class MainMenuScript : MonoBehaviour
 {
-    public Text Author;
+    public string Url;
 
     public void PlayGame()
     {
         SceneManager.LoadScene("Pong");
     }
 
-    public void OpenAuthor()
+    public void CreditScene()
     {
-        Debug.Log("Created By Farhan Annur Mahmudi - 149251970101-33");
+        SceneManager.LoadScene("Credit");
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void github()
+    {
+        Application.OpenURL(Url);
+    }
+
+    public void HowtoPlay()
+    {
+        SceneManager.LoadScene("How to Play");
+    }
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }
